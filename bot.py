@@ -1,4 +1,4 @@
-import os, sys, requests, json, copy, time, datetime
+import datetime
 import asyncio
 import discord
 import configs
