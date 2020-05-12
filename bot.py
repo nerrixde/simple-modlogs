@@ -20,7 +20,7 @@ async def on_member_ban(gld, usr):
         if entry.target.id == usr.id:
             found_entry = entry
             break
-    if not found_entry:
+    else:
         return
     await post_modlog(guild = gld, type = "BAN", user = found_entry.user, target = usr, reason = found_entry.reason)
 @client.event
@@ -33,7 +33,7 @@ async def on_member_unban(gld, usr):
         if entry.target.id == usr.id:
             found_entry = entry
             break
-    if not found_entry:
+    else:
         return
     await post_modlog(guild = gld, type = "UNBAN", user = found_entry.user, target = usr, reason = found_entry.reason)
 @client.event
@@ -46,7 +46,7 @@ async def on_member_remove(usr):
         if entry.target.id == usr.id:
             found_entry = entry
             break
-    if not found_entry:
+    else:
         return
     await post_modlog(guild = usr.guild, type = "KICK", user = found_entry.user, target = usr, reason = found_entry.reason)
 @client.event
@@ -67,7 +67,7 @@ async def on_member_update(before, after):
             if entry.target.id == after.id and not muted_role in entry.before.roles and muted_role in entry.after.roles:
                 found_entry = entry
                 break
-        if not found_entry:
+        else:
             return
         await post_modlog(guild = after.guild, type = "MUTE", user = found_entry.user, target = after, reason = found_entry.reason)
     elif muted_role not in after.roles and muted_role in before.roles:
@@ -81,7 +81,7 @@ async def on_member_update(before, after):
             if entry.target.id == after.id and muted_role in entry.before.roles and not muted_role in entry.after.roles:
                 found_entry = entry
                 break
-        if not found_entry:
+        else:
             return
         await post_modlog(guild = after.guild, type = "UNMUTE", user = found_entry.user, target = after, reason = found_entry.reason)
 async def post_modlog(guild, type, user, target, reason):
@@ -120,7 +120,7 @@ async def edit_reason(msg):
         if s.embeds[0].author.name.endswith(f" | Case {caseid}"):
             fnd_msg = s
             break
-    if not fnd_msg:
+    else:
         return
     fnd_em = fnd_msg.embeds[0]
     fnd_em.set_field_at(2, name = "Reason", value = new_reason, inline = False)
