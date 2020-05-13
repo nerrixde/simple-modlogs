@@ -1,4 +1,5 @@
 # Simple Modlogs
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/nerrixDE/simple-modlogs/fork) 
 ## About this bot
 - This bot does not scales up regarding servers, it's not recommended to use it on more than 50 servers.
 - There is no public version and there won't be.
